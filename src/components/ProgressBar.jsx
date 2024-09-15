@@ -9,8 +9,16 @@ const ProgressBar = ({ value = 0 }) => {
 
   return (
     <div className="progress-bar">
-      <span>{percent.toFixed()}%</span>
-      <div></div>
+      <span style={{ color: percent > 49 ? "white" : "black" }}>
+        {percent.toFixed()}%
+      </span>
+      <div
+        style={{ width: `${percent}%` }}
+        role="progress bar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={percent}
+      ></div>
     </div>
   );
 };

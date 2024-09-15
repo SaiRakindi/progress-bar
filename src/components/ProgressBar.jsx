@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { MAX, MIN } from "../constant";
 
-const ProgressBar = ({ value = 0 }) => {
+const ProgressBar = ({ value = MIN }) => {
   const [percent, setPercent] = useState(value);
 
   useEffect(() => {
-    setPercent(Math.min(100, Math.max(value, 0)));
+    setPercent(Math.min(MAX, Math.max(value, MIN)));
   }, [value]);
 
   return (
@@ -15,8 +16,8 @@ const ProgressBar = ({ value = 0 }) => {
       <div
         style={{ width: `${percent}%` }}
         role="progress bar"
-        aria-valuemin={0}
-        aria-valuemax={100}
+        aria-valuemin={MIN}
+        aria-valuemax={MAX}
         aria-valuenow={percent}
       ></div>
     </div>

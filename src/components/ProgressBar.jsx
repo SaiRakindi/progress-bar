@@ -14,7 +14,11 @@ const ProgressBar = ({ value = MIN }) => {
         {percent.toFixed()}%
       </span>
       <div
-        style={{ width: `${percent}%` }}
+        // style={{ width: `${percent}%` }} //optimization issue as width changes everytime
+        style={{
+          transform: `scaleX(${percent / MAX})`,
+          transformOrigin: "left",
+        }}
         role="progress bar"
         aria-valuemin={MIN}
         aria-valuemax={MAX}
